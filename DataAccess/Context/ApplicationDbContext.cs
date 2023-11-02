@@ -10,7 +10,7 @@ namespace DataAccess.Context
              
         }
         
-        public DbSet<Product> Product { get; set; } 
+        public DbSet<Product?> Products { get; set; } 
     }
 }
 
