@@ -1,3 +1,5 @@
+using Domain.Models;
+
 namespace Application.Abstraction
 {
     public interface IProductRepository
