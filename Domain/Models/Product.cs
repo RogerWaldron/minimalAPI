@@ -13,8 +13,8 @@ namespace Domain.Models
 
         public string? Description { get; set; }
         
-        public DateTime DateCreated { get; set; } = DateTime.Now;
+        public DateTime DateCreated { get; set; }
 
-        public DateTime LastModified { get; set; } = DateTime.Now;
+        public DateTime LastModified { get; set; }
     }
 }

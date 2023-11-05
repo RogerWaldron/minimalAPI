@@ -7,14 +7,14 @@ namespace DataAccess.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly ApplicationDbContext _ctx;
+        private readonly ProductDbContext _ctx;
         
-        public ProductRepository(ApplicationDbContext ctx)
+        public ProductRepository(ProductDbContext ctx)
         {
             _ctx = ctx;
         }
 
-        public async Task<ICollection<Product?>> GetAllProducts()
+        public async Task<ICollection<Product>> GetAllProducts()
         {
             return await _ctx.Products.ToListAsync();
         }
