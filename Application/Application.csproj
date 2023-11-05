@@ -16,7 +16,6 @@
 
     <ItemGroup>
       <Folder Include="Products\CommandHandlers\" />
-      <Folder Include="Products\QueryHandlers\" />
     </ItemGroup>
 
 </Project>

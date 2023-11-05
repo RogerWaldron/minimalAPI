@@ -4,7 +4,7 @@ namespace Application.Abstraction
 {
     public interface IProductRepository
     {
-        Task<ICollection<Product?>> GetAllProducts();
+        Task<ICollection<Product>> GetAllProducts();
 
         Task<Product?> GetProductById(int productId);
 
