@@ -30,5 +30,6 @@ Global
 		{028300D8-871D-4DEA-AF2A-3E16EA721E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{028300D8-871D-4DEA-AF2A-3E16EA721E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{028300D8-871D-4DEA-AF2A-3E16EA721E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{028300D8-871D-4DEA-AF2A-3E16EA721E8D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
