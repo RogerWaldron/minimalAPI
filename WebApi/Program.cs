@@ -1,12 +1,11 @@
 using WebApi.Config;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.RegisterServices();
+builder.RegisterMyServices();
 
 
 var app = builder.Build();
 
-app.RegisterEndpoints();
-app.MapGet("/", () => "Hello World!");
+app.RegisterMyEndpoints();
 
 app.Run();
