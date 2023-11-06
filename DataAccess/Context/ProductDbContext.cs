@@ -1,16 +1,15 @@
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Context
+namespace DataAccess.Context;
+
+public class ProductDbContext : DbContext
 {
-    public class ProductDbContext : DbContext
+    public ProductDbContext(DbContextOptions opt) : base(opt)
     {
-        public ProductDbContext(DbContextOptions opt) : base(opt)
-        {
-             
-        }
-        
-        public DbSet<Product> Products { get; set; } 
     }
+    
+    public DbSet<Product> Products { get; set; } 
 }
+
 

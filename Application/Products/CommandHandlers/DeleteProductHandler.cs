@@ -1,5 +1,4 @@
-using System.Globalization;
-using Application.Abstraction;
+using Application.Abstractions;
 using Application.Products.Commands;
 using Domain.Models;
 using MediatR;

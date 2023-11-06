@@ -1,17 +1,16 @@
 using Domain.Models;
 
-namespace Application.Abstraction
+namespace Application.Abstractions;
+
+public interface IProductRepository
 {
-    public interface IProductRepository
-    {
-        Task<ICollection<Product>> GetAllProducts();
+    Task<ICollection<Product>> GetAllProducts();
 
-        Task<Product?> GetProductById(int productId);
+    Task<Product> GetProductById(int productId);
 
-        Task<Product> CreateProduct(Product toCreate);
+    Task<Product> CreateProduct(Product toCreate);
 
-        Task<Product?> UpdateProduct(Product toUpdate, int productId);
+    Task<Product> UpdateProduct(Product toUpdate, int productId);
 
-        Task DeleteProduct(int productId);
-    }
+    Task DeleteProduct(int productId);
 }
