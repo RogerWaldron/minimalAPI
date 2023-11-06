@@ -1,4 +1,4 @@
-using Application.Abstraction;
+using Application.Abstractions;
 using Application.Products.Queries;
 using Domain.Models;
 using MediatR;

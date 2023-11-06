@@ -2,6 +2,7 @@ using Application.Products.Commands;
 using Application.Products.Queries;
 using Domain.Models;
 using MediatR;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace WebApi.Config;
 
@@ -27,17 +28,17 @@ public static class RegisterEndpointsProducts
         var req = new GetAllProducts();
         var products = await m.Send(req);
 
-        return Results.Ok(products);
+        return products == null ? TypedResults.NotFound() : TypedResults.Ok(products);
     }
 
-    private static async Task<IResult> GetProductByIdAsync(IMediator m, int id)
+    private static async Task<Results<Ok<Product>, NotFound>> GetProductByIdAsync(IMediator m, int id)
     {
         var getProduct = new GetProductById { ProductId = id };
-        var result = await m.Send(getProduct);
-
-        return Results.Ok(result);
+        var product = await m.Send(getProduct);
+        
+        return product == null ? TypedResults.NotFound() : TypedResults.Ok(product);
     }
-
+ 
     private static async Task<IResult> CreateProductAsync(IMediator m, Product product)
     {
         var createProduct = new CreateProduct
@@ -49,7 +50,7 @@ public static class RegisterEndpointsProducts
         return Results.CreatedAtRoute("GetProductById", new { newProduct.Id }, newProduct);
     }
 
-    private static async Task<IResult> UpdateProductAsync(IMediator m, Product product, int id)
+    private static async Task<Results<Ok<Product>, BadRequest>> UpdateProductAsync(IMediator m, Product product, int id)
     {
         var update = new UpdateProduct
         {
@@ -60,14 +61,14 @@ public static class RegisterEndpointsProducts
         };
         var updatedProduct = await m.Send(update);
 
-        return Results.Ok(updatedProduct);
+        return updatedProduct == null ? TypedResults.BadRequest() : TypedResults.Ok(updatedProduct);
     }
 
-    private static async Task<IResult> DeleteProductAsync(IMediator m, int id)
+    private static async Task<Results<NoContent, BadRequest>> DeleteProductAsync(IMediator m, int id)
     {
         var delete = new DeleteProduct { ProductId = id };
-        await m.Send(delete);
+        var product = await m.Send(delete);
 
-        return Results.NoContent();
+        return product == null ? TypedResults.BadRequest() : TypedResults.NoContent();
     }
 }
