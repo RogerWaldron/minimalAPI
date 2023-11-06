@@ -5,11 +5,10 @@ using MediatR;
 
 namespace WebApi.Config
 {
-    public static class RegisterEndpoints
+    public static class RegisterEndpointsProducts
     {
-        public static void RegisterMyEndpoints(this WebApplication app)
+        public static void RegisterProductsApiEndpoints(this WebApplication app)
         {
-            app.MapGet("/", () => "Hello World!");
             app.MapGet("/api/products/{id}", async (IMediator m, int id) =>
             {
                 var getProduct = new GetProductById { ProductId = id};
@@ -22,7 +21,7 @@ namespace WebApi.Config
             {
                 var req = new GetAllProducts();
                 var products = await m.Send(req);
-
+                
                 return Results.Ok(products);
             });
 

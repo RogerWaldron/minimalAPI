@@ -6,6 +6,6 @@ builder.RegisterMyServices();
 
 var app = builder.Build();
 
-app.RegisterMyEndpoints();
+app.RegisterProductsApiEndpoints();
 
 app.Run();
