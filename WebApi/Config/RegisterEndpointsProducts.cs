@@ -12,15 +12,26 @@ public static class RegisterEndpointsProducts
     {
         var groupUrl = app.MapGroup("/api/products");
 
-        groupUrl.MapGet("/{id}", GetProductByIdAsync).WithName("GetProductById");
+        groupUrl.MapGet("/{id}", GetProductByIdAsync)
+            .WithName("GetProductById")
+            .WithTags("ProductsGroup")
+            .WithOpenApi();
 
-        groupUrl.MapGet("/", GetAllProductsAsync);
+        groupUrl.MapGet("/", GetAllProductsAsync)
+            .WithTags("ProductsGroup")
+            .WithOpenApi();
 
-        groupUrl.MapPost("/", CreateProductAsync);
+        groupUrl.MapPost("/", CreateProductAsync)
+            .WithTags("ProductsGroup")
+            .WithOpenApi();
 
-        groupUrl.MapPut("/{id}", UpdateProductAsync);
+        groupUrl.MapPut("/{id}", UpdateProductAsync)
+            .WithTags("ProductsGroup")
+            .WithOpenApi();
 
-        groupUrl.MapDelete("/{id}", DeleteProductAsync);
+        groupUrl.MapDelete("/{id}", DeleteProductAsync)
+            .WithTags("ProductsGroup")
+            .WithOpenApi();
     }
 
     private static async Task<IResult> GetAllProductsAsync(IMediator m)
