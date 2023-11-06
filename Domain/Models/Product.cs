@@ -1,20 +1,18 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models
+namespace Domain.Models;
+public class Product
 {
-    public class Product
-    {
-        [Key]
-        public int Id { get; set; }
-        
-        public string? Brand { get; set; }
-        
-        public string? Title { get; set; }
+    [Key]
+    public int Id { get; set; }
+    
+    public string? Brand { get; set; }
+    
+    public string? Title { get; set; }
 
-        public string? Description { get; set; }
-        
-        public DateTime DateCreated { get; set; }
+    public string? Description { get; set; }
+    
+    public DateTime DateCreated { get; set; }
 
-        public DateTime LastModified { get; set; }
-    }
+    public DateTime LastModified { get; set; }
 }
