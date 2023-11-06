@@ -9,7 +9,9 @@ namespace WebApi.Config
     {
         public static void RegisterProductsApiEndpoints(this WebApplication app)
         {
-            app.MapGet("/api/products/{id}", async (IMediator m, int id) =>
+            var groupUrl = app.MapGroup("/api/products");
+            
+            groupUrl.MapGet("/{id}", async (IMediator m, int id) =>
             {
                 var getProduct = new GetProductById { ProductId = id};
                 var result = await m.Send(getProduct);
@@ -17,7 +19,7 @@ namespace WebApi.Config
                 return Results.Ok(result);
             }).WithName("GetProductById");
 
-            app.MapGet("/api/products", async (IMediator m) =>
+            groupUrl.MapGet("/", async (IMediator m) =>
             {
                 var req = new GetAllProducts();
                 var products = await m.Send(req);
@@ -25,7 +27,7 @@ namespace WebApi.Config
                 return Results.Ok(products);
             });
 
-            app.MapPost("/api/products", async (IMediator m, Product product) =>
+            groupUrl.MapPost("/", async (IMediator m, Product product) =>
             {
                 var createProduct = new CreateProduct
                 {
@@ -36,7 +38,7 @@ namespace WebApi.Config
                 return Results.CreatedAtRoute("GetProductById", new { newProduct.Id }, newProduct);
             });
 
-            app.MapPut("/api/products/{id}", async (IMediator m, Product product, int id) =>
+            groupUrl.MapPut("/{id}", async (IMediator m, Product product, int id) =>
             {
                 var update = new UpdateProduct
                 {
@@ -50,7 +52,7 @@ namespace WebApi.Config
                 return Results.Ok(updatedProduct);
             });
 
-            app.MapDelete("/api/products/{id}", async (IMediator m, int id) =>
+            groupUrl.MapDelete("/{id}", async (IMediator m, int id) =>
             {
                 var delete = new DeleteProduct { ProductId = id };
                 await m.Send(delete);
