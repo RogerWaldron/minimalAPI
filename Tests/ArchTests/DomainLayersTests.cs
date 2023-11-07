@@ -7,7 +7,7 @@ public class DomainLayerTests : BaseTest
     {
         var result = Types.InAssembly(DomainAssembly)
             .Should()
-            .NotHaveDependencyOnAny("Application", "DataAccess", "WebApi")
+            .NotHaveDependencyOnAny("Application, DataAccess, WebApi")
             .GetResult();
 
         result.IsSuccessful.Should().BeTrue();
