@@ -10,6 +10,6 @@ public abstract class BaseTest
 {
     protected static readonly Assembly DomainAssembly = typeof(Product).Assembly;
     protected static readonly Assembly ApplicationAssembly = typeof(IProductRepository).Assembly;
-    protected static readonly Assembly WebApiAssembly = typeof(RegisterEndpointsProducts).Assembly;
+    protected static readonly Assembly WebapiAssembly = typeof(RegisterEndpointsProducts).Assembly;
     protected static readonly Assembly DataAccessAssembly = typeof(ProductRepository).Assembly;
 }
