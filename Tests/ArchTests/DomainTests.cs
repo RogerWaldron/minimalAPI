@@ -1,7 +1,10 @@
+using Domain.Models;
+
 namespace ArchTests;
 
-public class UnitTest1
+public class DomainTests
 {
+        
     [Fact]
     public void Test1()
     {
