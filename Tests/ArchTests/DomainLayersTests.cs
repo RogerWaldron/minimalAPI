@@ -1,6 +1,3 @@
-using FluentAssertions;
-using NetArchTest.Rules;
-
 namespace ArchTests;
 
 public class DomainLayerTests : BaseTest
